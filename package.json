@@ -1,0 +1,11 @@
+{
+  "name": "kronikkamaatti",
+  "version": "0.0.0",
+  "description": "Kroniikkajärkkä",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julius Rajala",
+  "license": "ISC"
+}
