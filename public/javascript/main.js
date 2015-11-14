@@ -28,7 +28,6 @@ var GuildContainer = React.createClass({
     console.log(this.props.data);
     var guild = this.props.data;
     var riskiNode = function(){
-      console.log("Guildnodes initializing: Now.");
       return(
         <AsteriskiView data={"Asteriski"}/>
       );
@@ -40,9 +39,9 @@ var GuildContainer = React.createClass({
     };
     console.log("guildNodes defined, now to render.");
     return(
-      <div className="guildList">
-        {riskiNode}
-        {digitNode}
+      <div>
+        <AsteriskiView/>
+        <DigitView/>
       </div>
     );
   }
@@ -50,6 +49,7 @@ var GuildContainer = React.createClass({
 
 var AsteriskiView = React.createClass({
   getInitialState: function(){
+    console.log("initializing riskiView.");
     return {clicked: false};
   },
   componentDidMount: function(){
@@ -61,9 +61,10 @@ var AsteriskiView = React.createClass({
   render: function(){
     console.log("AsteriskiView rendering.");
     console.log(this.props.data);
-    if(clicked){
+    if(!this.state.clicked){
+      console.log("RiskiView has not been clicked.");
       return(
-        <IconView onClick={this.handleClick} />
+        <IconView onClick={this.handleClick} data={"asteriski"} />
       );
     }else{
       return(
@@ -86,9 +87,10 @@ var DigitView = React.createClass({
   render: function(){
     console.log("DigitView rendering.");
     console.log(this.props.data);
-    if(clicked){
+    if(!this.state.clicked){
+      console.log("DigitView has not been clicked.");
       return(
-        <IconView onClick={this.handleClick} />
+        <IconView onClick={this.handleClick} data={"digit"}/>
       );
     }else{
       return(
@@ -103,7 +105,7 @@ var IconView = React.createClass({
     console.log(this.props.data);
     return(
       <div className="iconView">
-        <p>Placeholder text</p>
+        <img src=("/images/"+{this.props.data}+".png")>
       </div>
     );
   }
