@@ -3,18 +3,20 @@ var Container = React.createClass({
     return {data: []};
   },
   componentDidMount: function(){
-    console.log("Component mounted.");
+    console.log("TopContainer mounted.");
     this.firebaseRef = new Firebase('https://kroniikkamaatti.firebaseIO.com/');
     this.data = [];
     this.firebaseRef.on('child_added', function(dataSnapshot){
       this.data.push(dataSnapshot.val());
       this.setState({data: this.data})
-    }).bind(this);
+    }.bind(this));
   },
 	render: function(){
+    console.log("TopContainer rendering.");
 		return(
       <div className="frontContainer">
       <h1>Valitse ainejärjestö</h1>
+      <GuildContainer/>
       </div>
 		);
 	}
@@ -22,24 +24,42 @@ var Container = React.createClass({
 
 var GuildContainer = React.createClass({
   render: function(){
+    console.log("GuildContainer rendering");
     console.log(this.props.data);
-    var guildNodes = this.props.data.map(function(guild){
+    var guild = this.props.data;
+    var riskiNode = function(){
+      console.log("Guildnodes initializing: Now.");
       return(
-        <ContainerView data={guild}/>
+        <AsteriskiView data={"Asteriski"}/>
       );
-    });
+    };
+    var digitNode = function(){
+      return(
+        <DigitView data={"Digit"}/>
+      );
+    };
+    console.log("guildNodes defined, now to render.");
+    return(
+      <div className="guildList">
+        {riskiNode}
+        {digitNode}
+      </div>
+    );
   }
 });
 
-var ContainerView = React.createClass({
+var AsteriskiView = React.createClass({
   getInitialState: function(){
     return {clicked: false};
+  },
+  componentDidMount: function(){
+    console.log("AsteriskiView mounted.");
   },
   handleClick: function(event){
     this.setState({clicked: !this.state.clicked})
   },
   render: function(){
-    console.log("containerView rendering.");
+    console.log("AsteriskiView rendering.");
     console.log(this.props.data);
     if(clicked){
       return(
@@ -47,7 +67,32 @@ var ContainerView = React.createClass({
       );
     }else{
       return(
-        <TutorView/>
+        <TutorView data={"asteriski"}/>
+      );
+    }
+  }
+});
+
+var DigitView = React.createClass({
+  getInitialState: function(){
+    return {clicked: false};
+  },
+  handleClick: function(event){
+    this.setState({clicked: !this.state.clicked})
+  },
+  componentDidMount: function(){
+    console.log("DigitView mounted.");
+  },
+  render: function(){
+    console.log("DigitView rendering.");
+    console.log(this.props.data);
+    if(clicked){
+      return(
+        <IconView onClick={this.handleClick} />
+      );
+    }else{
+      return(
+        <TutorView data={"digit"}/>
       );
     }
   }
@@ -55,9 +100,12 @@ var ContainerView = React.createClass({
 
 var IconView = React.createClass({
   render: function(){
-    <div className="iconView">
-      <p>Placeholder text</p>
-    </div>
+    console.log(this.props.data);
+    return(
+      <div className="iconView">
+        <p>Placeholder text</p>
+      </div>
+    );
   }
 });
 
