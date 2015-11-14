@@ -39,7 +39,7 @@ var GuildContainer = React.createClass({
     };
     console.log("guildNodes defined, now to render.");
     return(
-      <div>
+      <div className="contentContainer">
         <AsteriskiView/>
         <DigitView/>
       </div>
@@ -64,7 +64,9 @@ var AsteriskiView = React.createClass({
     if(!this.state.clicked){
       console.log("RiskiView has not been clicked.");
       return(
-        <IconView onClick={this.handleClick} data={"asteriski"} />
+        <div className="iconView">
+          <img className="guildIcon" src="/images/asteriski.png" onClick={this.handleClick}/>
+        </div>
       );
     }else{
       return(
@@ -90,7 +92,9 @@ var DigitView = React.createClass({
     if(!this.state.clicked){
       console.log("DigitView has not been clicked.");
       return(
-        <IconView onClick={this.handleClick} data={"digit"}/>
+        <div className="iconView">
+          <img className="guildIcon" src="/images/digit.png" onClick={this.handleClick}/>
+        </div>
       );
     }else{
       return(
@@ -100,22 +104,14 @@ var DigitView = React.createClass({
   }
 });
 
-var IconView = React.createClass({
-  render: function(){
-    console.log(this.props.data);
-    return(
-      <div className="iconView">
-        <img src=("/images/"+{this.props.data}+".png")>
-      </div>
-    );
-  }
-});
 
 var TutorView = React.createClass({
   render: function(){
     return(
-      <p>tutorview palceholder</p>
-    )
+      <div className="iconView">
+        <p>tutorview palceholder</p>
+      </div>
+    );
   }
 });
 

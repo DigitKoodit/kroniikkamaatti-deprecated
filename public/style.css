@@ -1,6 +1,7 @@
 body{
 	/*background-color: rgb(33,33,33);*/
-	background-image: url('/images/backforest.jpg');
+	background-image: url('/images/tausta2.gif');
+	background-size: 100%; 
 
 }
 
@@ -15,32 +16,29 @@ body{
 h1{
 	font-size: 5em;
 	font-family: 'Julius Sans One', sans-serif;
-	color: #1976D2;
+	color: #ffffff;
 	text-align: center;
 	margin-bottom: 1em;
 }
 
-.mainContainer{
+.contentContainer{
 	text-align: justify;
-	margin-top: 5%;
-	margin-left: auto;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 1200px;
+	position: fixed;
 	margin-right: auto;
-	max-width: 800px;
+	margin-left: auto;
+	text-align: center;
 	color: #B6B6B6;
-	background-color: rgb(33,33,33);
-	background-color: rgba(33,33,33,0.8);
-	padding: 5em;
+	background-color: rgb(255,255,255);
+	background-color: rgba(255,255,255, 0.9);
 	font-family: 'Roboto Condensed', sans-serif;
 
 	-webkit-box-shadow: 4px 4px 42px 2px rgba(0,0,0,0.39);
 	-moz-box-shadow: 4px 4px 42px 2px rgba(0,0,0,0.39);
 	box-shadow: 4px 4px 42px 2px rgba(0,0,0,0.39);
-}
-
-.mainContainer p{
-	width: 70%;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .skeletonFooter{
@@ -59,33 +57,21 @@ h1{
 	box-shadow: 4px 4px 42px 2px rgba(0,0,0,0.39);	
 }
 
-.navBarDark{
-	border-radius: 0;
-	font-family: 'Roboto', sans-serif;
-	border: 0px;
-	background-color: rgba(0,0,0,0);
-	margin-left: 5%;
-	margin-right: 5%;
+.iconView{
+	width: 50%;
+	float: left;
 }
 
-.navBrand{
-	font-family: 'Roboto Condensed', sans-serif;
-	color: #FFFFFF;
 
-}
-
-.navigationLink{
-	color: red;
-	width: 7em;
-	font-size: 1em;
+.guildIcon{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
-	font-family: 'Roboto Condensed', sans-serif;
+	padding: 3em;
+
 }
 
-.navItem:hover{
-	color: white;
-}
-
-.navItem{
-	color: #B6B6B6;
+.guildIcon:hover{
+	opacity: 0.5;
 }
