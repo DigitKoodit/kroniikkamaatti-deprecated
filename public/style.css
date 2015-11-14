@@ -1,7 +1,7 @@
 body{
 	/*background-color: rgb(33,33,33);*/
-	background-image: url('/images/tausta2.gif');
-	background-size: 100%; 
+	background-image: url('/images/pat2.gif');
+	background-repeat: repeat-x | repeat-y;
 
 }
 
@@ -14,11 +14,21 @@ body{
 }
 
 h1{
-	font-size: 5em;
-	font-family: 'Julius Sans One', sans-serif;
-	color: #ffffff;
+	font-size: 4em;
+	font-family: 'Fjalla One', sans-serif;
+	height: 1em;
+	width: 100%;
+	color: #E6DCDB;
 	text-align: center;
-	margin-bottom: 1em;
+}
+
+h2{
+	font-size: 2em;
+	font-family: 'Bitter', serif;
+	height: 1em;
+	width: 100%;
+	color: rgb(33,33,33);
+	text-align: center; 
 }
 
 .contentContainer{
@@ -26,25 +36,23 @@ h1{
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-	max-width: 1200px;
+	width: 60%;
+	max-width: 700px;
 	position: fixed;
-	margin-right: auto;
-	margin-left: auto;
 	text-align: center;
 	color: #B6B6B6;
-	background-color: rgb(255,255,255);
-	background-color: rgba(255,255,255, 0.9);
+	background-color: #D2D7D3;
 	font-family: 'Roboto Condensed', sans-serif;
-
+	border-radius: .5em;
 	-webkit-box-shadow: 4px 4px 42px 2px rgba(0,0,0,0.39);
 	-moz-box-shadow: 4px 4px 42px 2px rgba(0,0,0,0.39);
 	box-shadow: 4px 4px 42px 2px rgba(0,0,0,0.39);
 }
 
 .skeletonFooter{
-	color: #B6B6B6;
-	background-color: #212121;
-	background-color: rgba(33,33,33,0.8);
+	color: #E6DCDB;
+	background-color: rgba(33,33,33,0.9);
+	/*background-color: #CF000F;*/
 	font-family: 'Roboto Condensed', sans-serif;
 	width: 100%;
 	height: 3em;
@@ -68,7 +76,8 @@ h1{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	padding: 3em;
+	padding: 10%;
+	top:50%;
 
 }
 

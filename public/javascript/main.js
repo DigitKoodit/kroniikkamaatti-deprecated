@@ -15,7 +15,7 @@ var Container = React.createClass({
     console.log("TopContainer rendering.");
 		return(
       <div className="frontContainer">
-      <h1>Valitse ainejärjestö</h1>
+      <h1>Kroniikkamaatti</h1>
       <GuildContainer/>
       </div>
 		);
@@ -40,6 +40,7 @@ var GuildContainer = React.createClass({
     console.log("guildNodes defined, now to render.");
     return(
       <div className="contentContainer">
+      <h2>Valitse ensin järjestö, sitten tuutoriryhmä.</h2>
         <AsteriskiView/>
         <DigitView/>
       </div>
