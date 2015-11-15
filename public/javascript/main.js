@@ -1,3 +1,5 @@
+var GuildSelected = 0;
+
 var Container = React.createClass({
   getInitialState : function(){
     return {data: []};
@@ -12,7 +14,6 @@ var Container = React.createClass({
     }.bind(this));
   },
 	render: function(){
-    console.log("TopContainer rendering.");
 		return(
       <div className="frontContainer">
       <h1>Kroniikkamaatti</h1>
@@ -23,6 +24,17 @@ var Container = React.createClass({
 });
 
 var GuildContainer = React.createClass({
+  getInitialState: function(){
+    return {riskiClicked: false, digitClicked: false};
+  },
+  onChildChanged: function(child, newState){
+    console.log("Child changed with state: "+ newState);
+    if(child===0){
+      riskiClicked = newState;
+    }else{
+      digitClicked = newState;
+    }
+  },
   render: function(){
     console.log("GuildContainer rendering");
     console.log(this.props.data);
@@ -37,7 +49,6 @@ var GuildContainer = React.createClass({
         <DigitView data={"Digit"}/>
       );
     };
-    console.log("guildNodes defined, now to render.");
     return(
       <div className="contentContainer">
       <h2>Valitse ensin järjestö, sitten tuutoriryhmä.</h2>
@@ -50,19 +61,18 @@ var GuildContainer = React.createClass({
 
 var AsteriskiView = React.createClass({
   getInitialState: function(){
-    console.log("initializing riskiView.");
     return {clicked: false};
   },
   componentDidMount: function(){
     console.log("AsteriskiView mounted.");
   },
   handleClick: function(event){
-    this.setState({clicked: !this.state.clicked})
+    this.setState({clicked: !this.state.clicked});
+    this.props.callbackParent(0, this.state.clicked);
+    
   },
   render: function(){
-    console.log("AsteriskiView rendering.");
-    console.log(this.props.data);
-    if(!this.state.clicked){
+    if(!this.state.clicked && GuildSelected != 1){
       console.log("RiskiView has not been clicked.");
       return(
         <div className="iconView">
@@ -71,7 +81,7 @@ var AsteriskiView = React.createClass({
       );
     }else{
       return(
-        <TutorView data={"asteriski"}/>
+        <TutorView data={"Asteriski"}/>
       );
     }
   }
@@ -82,16 +92,15 @@ var DigitView = React.createClass({
     return {clicked: false};
   },
   handleClick: function(event){
-    this.setState({clicked: !this.state.clicked})
+    this.setState({clicked: !this.state.clicked});
+    this.props.callbackParent(this.state.clicked);
   },
   componentDidMount: function(){
     console.log("DigitView mounted.");
   },
   render: function(){
-    console.log("DigitView rendering.");
     console.log(this.props.data);
-    if(!this.state.clicked){
-      console.log("DigitView has not been clicked.");
+    if(!this.state.clicked && GuildSelected != 2){
       return(
         <div className="iconView">
           <img className="guildIcon" src="/images/digit.png" onClick={this.handleClick}/>
@@ -99,7 +108,7 @@ var DigitView = React.createClass({
       );
     }else{
       return(
-        <TutorView data={"digit"}/>
+        <TutorView data={"Digit"}/>
       );
     }
   }
@@ -108,11 +117,35 @@ var DigitView = React.createClass({
 
 var TutorView = React.createClass({
   render: function(){
-    return(
-      <div className="iconView">
-        <p>tutorview palceholder</p>
-      </div>
-    );
+    console.log("Showing tutorView for: " + this.props.data);
+    if(this.props.data === "Digit"){
+      return(
+        <div className="iconView">
+          <ul className="tutorList">
+            <h3>{this.props.data + "in tuutoriryhmät"}</h3>
+            <li><a href="#">Tatu ja Julius</a> </li>
+            <li><a href="#">Asser ja Tino</a> </li>
+            <li><a href="#">Axel ja Lasse</a> </li>
+            <li><a href="#">Konsta ja Pilvi</a> </li>
+            <li><a href="#">Olli ja Sampsa</a> </li>
+          </ul>
+        </div>
+      );
+    }else{
+      return(
+        <div className="iconView">
+          <ul className="tutorList">
+            <h3>{this.props.data + "n tuutoriryhmät"}</h3>
+            <li><a href="#">Ivan ja Henna</a> </li>
+            <li><a href="#">Eemil ja Eero</a> </li>
+            <li><a href="#">Juha ja Lauri</a> </li>
+            <li><a href="#">Suvi ja Eeva</a> </li>
+            <li><a href="#">Valtteri ja Jesse</a> </li>
+            <li><a href="#">Janne ja Pekka</a> </li>
+          </ul>
+        </div>
+      );
+    }
   }
 });
 
