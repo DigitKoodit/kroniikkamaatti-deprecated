@@ -27,33 +27,29 @@ var GuildContainer = React.createClass({
   getInitialState: function(){
     return {riskiClicked: false, digitClicked: false};
   },
-  onChildChanged: function(child, newState){
+  onClicked: function(child, newState){
     console.log("Child changed with state: "+ newState);
     if(child===0){
-      riskiClicked = newState;
+      this.setState({riskiClicked: newState});
+      this.setState({digitClicked: !newState});
+      console.log("riskiClicked state: " + this.state.riskiClicked);
     }else{
-      digitClicked = newState;
+      this.setState({digitClicked: newState});
+      this.setState({riskiClicked: !newState});
+      console.log("digitClicked state: " + this.state.digitClicked);
     }
+
+    this.forceUpdate();
   },
   render: function(){
     console.log("GuildContainer rendering");
-    console.log(this.props.data);
+    console.log(this.state.riskiClicked +" and " +this.state.digitClicked);
     var guild = this.props.data;
-    var riskiNode = function(){
-      return(
-        <AsteriskiView data={"Asteriski"}/>
-      );
-    };
-    var digitNode = function(){
-      return(
-        <DigitView data={"Digit"}/>
-      );
-    };
     return(
       <div className="contentContainer">
       <h2>Valitse ensin järjestö, sitten tuutoriryhmä.</h2>
-        <AsteriskiView/>
-        <DigitView/>
+        <AsteriskiView onClicked={this.onClicked} digitClicked={this.state.digitClicked} riskiClicked={this.state.riskiClicked}/>
+        <DigitView onClicked={this.onClicked} riskiClicked={this.state.riskiClicked} digitClicked={this.state.digitClicked}/>
       </div>
     );
   }
@@ -61,25 +57,27 @@ var GuildContainer = React.createClass({
 
 var AsteriskiView = React.createClass({
   getInitialState: function(){
-    return {clicked: false};
+    return {clicked: this.props.riskiClicked};
   },
   componentDidMount: function(){
-    console.log("AsteriskiView mounted.");
+    //console.log("AsteriskiView mounted.");
   },
   handleClick: function(event){
-    this.setState({clicked: !this.state.clicked});
-    this.props.callbackParent(0, this.state.clicked);
-    
+    console.log("RiskiView icon clicked.");
+    this.setState({clicked: !this.state.clicked}, function(){
+      this.props.onClicked(0, this.state.clicked);
+    });
+    console.log("RiskiView clicked state after setState="+ this.state.clicked);    
   },
   render: function(){
-    if(!this.state.clicked && GuildSelected != 1){
-      console.log("RiskiView has not been clicked.");
+    console.log("Rendering riskiView, digitClicked is "+ this.props.digitClicked);
+    if(!this.state.clicked || this.props.digitClicked){
       return(
         <div className="iconView">
           <img className="guildIcon" src="/images/asteriski.png" onClick={this.handleClick}/>
         </div>
       );
-    }else{
+    }else if(this.state.clicked && !this.props.digitClicked){
       return(
         <TutorView data={"Asteriski"}/>
       );
@@ -89,24 +87,26 @@ var AsteriskiView = React.createClass({
 
 var DigitView = React.createClass({
   getInitialState: function(){
-    return {clicked: false};
+    return {clicked: this.props.digitClicked};
   },
   handleClick: function(event){
-    this.setState({clicked: !this.state.clicked});
-    this.props.callbackParent(this.state.clicked);
+    console.log("DigitView icon clicked,");
+    this.setState({clicked: !this.state.clicked}, function(){
+      this.props.onClicked(1, this.state.clicked);
+    });
   },
   componentDidMount: function(){
-    console.log("DigitView mounted.");
+    //console.log("DigitView mounted.");
   },
   render: function(){
-    console.log(this.props.data);
-    if(!this.state.clicked && GuildSelected != 2){
+    console.log("Rendering DigitView")
+    if(!this.state.clicked || this.props.riskiClicked){
       return(
         <div className="iconView">
           <img className="guildIcon" src="/images/digit.png" onClick={this.handleClick}/>
         </div>
       );
-    }else{
+    }else if(this.state.clicked && !this.props.riskiClicked){
       return(
         <TutorView data={"Digit"}/>
       );
