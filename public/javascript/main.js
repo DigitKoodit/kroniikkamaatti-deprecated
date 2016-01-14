@@ -183,19 +183,21 @@ var FuksiView = React.createClass({
     console.log("FuksiView called with " + this.props.fuksit);
     return  {fuksiClicked: null, fuksit: this.props.fuksit}
   },
+  handleFuksiClick: function( i){
+    console.log(this.props.fuksit[i] + " clicked.");
+    this.setState({fuksiClicked: this.props.fuksit[i]});
+  },
   componentDidMount: function(){
     console.log("Rendering fuksiview for: " + this.props.fuksit);
+    // this.handleFuksiClick(2);
   },
-  handleFuksiClick: function(fuksi){
-    console.log(fuksi + " clicked.");
-    this.setState({fuksiClicked: fuksi});
-  }.bind(this),
 
   render: function(){
+    var that = this;
     if(this.state.fuksiClicked != null){
       console.log("Fuksi "+ this.state.fuksiClicked +"clicked, grabbing fuksi-form.");
       return(
-        <h2>Placeholder</h2>
+        <CommentView name={this.state.fuksiClicked}/>
       );
     }else{
       return(
@@ -203,12 +205,45 @@ var FuksiView = React.createClass({
           <ul>
             {this.props.fuksit.map(function(fuksi, i){
               console.log("i: " + i + " fuksi: " + fuksi);
-              return <li key={i} onClick={() => {this.handleFuksiClick(fuksi) }}> {fuksi}</li>
+              return <li key={i} onClick={() => {that.handleFuksiClick(i) }}> {fuksi}</li>
             })}
           </ul>
         </div>
-      )
+      );
     }
+  }
+});
+
+var CommentView = React.createClass({
+  componentDidMount: function(){
+    console.log("Component mounted for " + this.props.name);
+  },
+  handleTextChange: function(e){
+    this.setState({text:e.target.value});
+  },
+  commentSubmit: function(comment){
+    comment.preventDefault();
+    var text = this.state.text.trim();
+    var person = this.props.name;
+    console.log("Comment for " + person + " that says " + text);
+    if( !text){
+      return;
+    }
+    this.setState({text:''});
+  },
+  getInitialState: function(){
+    return {text: ''};
+  },
+  render: function(){
+    return(
+      <div className="fuksiContent">
+      <h2>{this.props.name}</h2>
+        <form className="commentForm" onSubmit={this.commentSubmit}>
+          <input className="commentField" type="text" placeholder="Kommenttisi" value={this.state.text} onChange={this.handleTextChange}/>
+          <input className="commentButton" type="submit" value="Kronikoi"/>
+        </form>
+      </div>
+    );
   }
 });
 
