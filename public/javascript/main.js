@@ -1,10 +1,28 @@
 var GuildSelected = 0;
 
-var TatuJulius = ["Aleksi", "Arttu", "Jali", "Matti", "Mikael", "Olli", "Ossi", "Roni", "Samuli"];
-var AsserTino = ["Eemeli", "Janne", "Johan", "Lassi", "Niklas B", "Niklas Lehtonen", "Santeri", "Tero", "Valtteri"];
-var AxelLasse = ["Joona", "Adrian", "Aleksi", "Antti", "Artturi", "Jussi", "Kalle", "Niklas N"];
-var KonstaPilvi = ["Henna", "Josia", "Lauri L", "Lauri M", "Loviisa", "Maria", "Meri", "Timo", "Topi"];
-var OlliSampsa = ["Antti", "Juho", "Lauri", "Mikko", "Niklas Luomala", "Peetu", "Rami"];
+var Digit = [
+  {
+    tuutorit: "Tatu ja Julius",
+    fuksit: ["Aleksi", "Arttu", "Jali", "Matti", "Mikael", "Olli", "Ossi", "Roni", "Samuli"]
+  },
+  {
+    tuutorit: "Asser ja Tino",
+    fuksit: ["Eemeli", "Janne", "Johan", "Lassi", "Niklas B", "Niklas Lehtonen", "Santeri", "Tero", "Valtteri"]
+  },
+  {
+    tuutorit: "Axel ja Lasse",
+    fuksit: ["Joona", "Adrian", "Aleksi", "Antti", "Artturi", "Jussi", "Kalle", "Niklas N"]
+  },
+  {
+    tuutorit: "Konsta ja Pilvi",
+    fuksit: ["Henna", "Josia", "Lauri L", "Lauri M", "Loviisa", "Maria", "Meri", "Timo", "Topi"]
+  },
+  {
+    tuutorit: "Olli ja Sampsa",
+    fuksit: ["Antti", "Juho", "Lauri", "Mikko", "Niklas Luomala", "Peetu", "Rami"]
+  }
+
+]; 
 
 var IvanHenna = [];
 var EemilEero = [];
@@ -21,10 +39,10 @@ var Container = React.createClass({
     console.log("TopContainer mounted.");
     this.firebaseRef = new Firebase('https://kroniikkamaatti.firebaseIO.com/');
     this.data = [];
-    // this.firebaseRef.on('child_added', function(dataSnapshot){
-    //   this.data.push(dataSnapshot.val());
-    //   this.setState({data: this.data})
-    // }.bind(this));
+    this.firebaseRef.on('child_added', function(dataSnapshot){
+      this.data.push(dataSnapshot.val());
+      this.setState({data: this.data})
+    }.bind(this));
   },
 	render: function(){
 		return(
@@ -138,16 +156,16 @@ var TutorView = React.createClass({
   },
   render: function(){
     console.log("Showing tutorView for: " + this.props.data);
+    var that = this;
     if(this.state.fuksit === null && this.props.data === "Digit"){
       return(
         <div className="iconView">
           <ul className="tutorList">
             <h3>{this.props.data + "in tuutoriryhmät"}</h3>
-            <li onClick={() => {this.handleTutorClick(TatuJulius)} }>Tatu ja Julius </li>
-            <li><a href="#">Asser ja Tino</a> </li>
-            <li><a href="#">Axel ja Lasse</a> </li>
-            <li><a href="#">Konsta ja Pilvi</a> </li>
-            <li><a href="#">Olli ja Sampsa</a> </li>
+              {Digit.map(function(tuutori, i){
+              // console.log("i: " + Digit[i].tuutorit + " fuksi: " + Digit[i].fuksit);
+              return <li key={i} onClick={() => {that.handleTutorClick(Digit[i].fuksit) }}> {Digit[i].tuutorit}</li>
+            })}
           </ul>
         </div>
       );
@@ -242,6 +260,7 @@ var CommentView = React.createClass({
           <input className="commentField" type="text" placeholder="Kommenttisi" value={this.state.text} onChange={this.handleTextChange}/>
           <input className="commentButton" type="submit" value="Kronikoi"/>
         </form>
+        
       </div>
     );
   }
