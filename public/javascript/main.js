@@ -1,5 +1,18 @@
 var GuildSelected = 0;
 
+var TatuJulius = ["Aleksi", "Arttu", "Jali", "Matti", "Mikael", "Olli", "Ossi", "Roni", "Samuli"];
+var AsserTino = ["Eemeli", "Janne", "Johan", "Lassi", "Niklas B", "Niklas Lehtonen", "Santeri", "Tero", "Valtteri"];
+var AxelLasse = ["Joona", "Adrian", "Aleksi", "Antti", "Artturi", "Jussi", "Kalle", "Niklas N"];
+var KonstaPilvi = ["Henna", "Josia", "Lauri L", "Lauri M", "Loviisa", "Maria", "Meri", "Timo", "Topi"];
+var OlliSampsa = ["Antti", "Juho", "Lauri", "Mikko", "Niklas Luomala", "Peetu", "Rami"];
+
+var IvanHenna = [];
+var EemilEero = [];
+var JuhaLauri = [];
+var SuviEeva = [];
+var ValtteriJesse = [];
+var JannePekka = [];
+
 var Container = React.createClass({
   getInitialState : function(){
     return {data: []};
@@ -8,10 +21,10 @@ var Container = React.createClass({
     console.log("TopContainer mounted.");
     this.firebaseRef = new Firebase('https://kroniikkamaatti.firebaseIO.com/');
     this.data = [];
-    this.firebaseRef.on('child_added', function(dataSnapshot){
-      this.data.push(dataSnapshot.val());
-      this.setState({data: this.data})
-    }.bind(this));
+    // this.firebaseRef.on('child_added', function(dataSnapshot){
+    //   this.data.push(dataSnapshot.val());
+    //   this.setState({data: this.data})
+    // }.bind(this));
   },
 	render: function(){
 		return(
@@ -116,14 +129,21 @@ var DigitView = React.createClass({
 
 
 var TutorView = React.createClass({
+  getInitialState: function(){
+    return {fuksit: null};
+  },
+  handleTutorClick: function(fuksit){
+    console.log("Tutorit clicked with "+ fuksit[0])
+    this.setState({fuksit: fuksit});
+  },
   render: function(){
     console.log("Showing tutorView for: " + this.props.data);
-    if(this.props.data === "Digit"){
+    if(this.state.fuksit === null && this.props.data === "Digit"){
       return(
         <div className="iconView">
           <ul className="tutorList">
             <h3>{this.props.data + "in tuutoriryhmät"}</h3>
-            <li><a href="#">Tatu ja Julius</a> </li>
+            <li onClick={() => {this.handleTutorClick(TatuJulius)} }>Tatu ja Julius </li>
             <li><a href="#">Asser ja Tino</a> </li>
             <li><a href="#">Axel ja Lasse</a> </li>
             <li><a href="#">Konsta ja Pilvi</a> </li>
@@ -131,7 +151,8 @@ var TutorView = React.createClass({
           </ul>
         </div>
       );
-    }else{
+    }else if (this.state.fuksit === null && this.props.data === "Asteriski"){
+      console.log("showing Riskit");
       return(
         <div className="iconView">
           <ul className="tutorList">
@@ -145,6 +166,48 @@ var TutorView = React.createClass({
           </ul>
         </div>
       );
+    }else if(this.state.fuksit !== null){
+      console.log("Fuksit is not null");
+      return(
+        <FuksiView fuksit={this.state.fuksit}/>
+        // <p>Placeholder</p>
+      );
+    }else{
+      return(<h2>Something went wrong.</h2>);
+    }
+  }
+});
+
+var FuksiView = React.createClass({
+  getInitialState: function(){
+    console.log("FuksiView called with " + this.props.fuksit);
+    return  {fuksiClicked: null, fuksit: this.props.fuksit}
+  },
+  componentDidMount: function(){
+    console.log("Rendering fuksiview for: " + this.props.fuksit);
+  },
+  handleFuksiClick: function(fuksi){
+    console.log(fuksi + " clicked.");
+    this.setState({fuksiClicked: fuksi});
+  }.bind(this),
+
+  render: function(){
+    if(this.state.fuksiClicked != null){
+      console.log("Fuksi "+ this.state.fuksiClicked +"clicked, grabbing fuksi-form.");
+      return(
+        <h2>Placeholder</h2>
+      );
+    }else{
+      return(
+        <div className="tutorList">
+          <ul>
+            {this.props.fuksit.map(function(fuksi, i){
+              console.log("i: " + i + " fuksi: " + fuksi);
+              return <li key={i} onClick={() => {this.handleFuksiClick(fuksi) }}> {fuksi}</li>
+            })}
+          </ul>
+        </div>
+      )
     }
   }
 });
