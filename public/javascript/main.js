@@ -120,7 +120,7 @@ var AsteriskiView = React.createClass({
     if(!this.state.clicked || this.props.digitClicked){
       return(
         <div className="iconView">
-          <img className="guildIcon" src="/images/asteriski.png" onClick={this.handleClick}/>
+          <a href="#"><img className="guildIcon" src="/images/asteriski.png" onClick={this.handleClick}/></a>
         </div>
       );
     }else if(this.state.clicked && !this.props.digitClicked){
@@ -149,7 +149,7 @@ var DigitView = React.createClass({
     if(!this.state.clicked || this.props.riskiClicked){
       return(
         <div className="iconView">
-          <img className="guildIcon" src="/images/digit.png" onClick={this.handleClick}/>
+          <a href="#"><img className="guildIcon" src="/images/digit.png" onClick={this.handleClick}/></a>
         </div>
       );
     }else if(this.state.clicked && !this.props.riskiClicked){
