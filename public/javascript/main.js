@@ -11,7 +11,7 @@ var Digit = [
   },
   {
     tuutorit: "Axel ja Lasse",
-    fuksit: ["Tuutori Axel", "Tuutori Lasse" "Joona Juusti", "Adrian Borzyszkowski", "Aleksi Palalitsas", "Antti Vuorinen", "Artturi Tähtinen", "Jussi Wallin", "Kalle Linden", "Niklas Niemelä"]
+    fuksit: ["Tuutori Axel", "Tuutori Lasse", "Joona Juusti", "Adrian Borzyszkowski", "Aleksi Palalitsas", "Antti Vuorinen", "Artturi Tähtinen", "Jussi Wallin", "Kalle Linden", "Niklas Niemelä"]
   },
   {
     tuutorit: "Konsta ja Pilvi",
