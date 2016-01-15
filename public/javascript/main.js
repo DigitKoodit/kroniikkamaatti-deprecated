@@ -1,4 +1,4 @@
-var GuildSelected = 0;
+﻿var GuildSelected = 0;
 
 var Digit = [
   {
@@ -15,7 +15,7 @@ var Digit = [
   },
   {
     tuutorit: "Konsta ja Pilvi",
-    fuksit: ["Henna Henriksson", "Josia Nyman", "Lauri Laakkonen", "Lauri Mukkala", "Loviisa Mäenpää", "Maria Kostina", "Meri Saarinen", "Timo Blomqvist", "Topi Mäkinen"]
+    fuksit: ["Tuutori Konsta", "Tuutori Pilvi", "Henna Henriksson", "Josia Nyman", "Lauri Laakkonen", "Lauri Mukkala", "Loviisa Mäenpää", "Maria Kostina", "Meri Saarinen", "Timo Blomqvist", "Topi Mäkinen"]
   },
   {
     tuutorit: "Olli ja Sampsa",
