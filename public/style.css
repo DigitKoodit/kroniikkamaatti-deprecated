@@ -1,6 +1,6 @@
 body{
 	/*background-color: rgb(33,33,33);*/
-	background-image: url('/images/pat2.gif');
+	background-image: url('/images/pat2.png');
 	background-repeat: repeat-x | repeat-y;
 
 }
@@ -18,7 +18,7 @@ h1{
 	font-family: 'Fjalla One', sans-serif;
 	height: 1em;
 	width: 100%;
-	color: #E6DCDB;
+	color: rgb(33,33,33);
 	text-align: center;
 }
 
@@ -33,11 +33,11 @@ h2{
 }
 
 h3{
-	font-size: 1em;
+	font-size: 1.1em;
 	font-family: 'Bitter', serif;
 	color: rgb(33,33,33);
 	margin: 1em;
-	text-align: left;
+	text-align: center;
 }
 
 .contentContainer{
@@ -50,8 +50,8 @@ h3{
 	position: fixed;
 	text-align: center;
 	color: #B6B6B6;
-	background-color: #D2D7D3;
-	font-family: 'Roboto Condensed', sans-serif;
+	background-color: white;
+	font-family: 'Fjalla One', sans-serif;
 	border-radius: .5em;
 	-webkit-box-shadow: 4px 4px 42px 2px rgba(0,0,0,0.39);
 	-moz-box-shadow: 4px 4px 42px 2px rgba(0,0,0,0.39);
@@ -85,9 +85,13 @@ h3{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	padding: 10%;
+	padding: 5%;
 	top:50%;
-
+	-webkit-transition: opacity .15s ease-in-out;
+  -moz-transition: opacity .15s ease-in-out;
+  -ms-transition: opacity .15s ease-in-out;
+  -o-transition: opacity .15s ease-in-out;
+  transition: opacity .15s ease-in-out;
 }
 
 .tutorList{
@@ -96,9 +100,73 @@ h3{
 	color: rgb(33,33,33);
 	margin: 1em;
 	font-size: 1.5em;
-	text-align: left;
+	text-align: center;
+	vertical-align: middle;
+	list-style-type: none;
 }
 
 .guildIcon:hover{
-	opacity: 0.5;
+	opacity: 0.7;
+}
+
+.listComponent a{
+	text-decoration: none;
+	color: rgb(33,33,33);
+	opacity: 0.7;
+	-webkit-transition: opacity .15s ease-in-out;
+  -moz-transition: opacity .15s ease-in-out;
+  -ms-transition: opacity .15s ease-in-out;
+  -o-transition: opacity .15s ease-in-out;
+  transition: opacity .15s ease-in-out;
+}
+
+.backKey{
+	font-family: 'Bitter', serif;
+	text-decoration: none;
+	color: rgb(33,33,33);
+	opacity: 0.7;
+	font-size: 2em;
+	-webkit-transition: opacity .15s ease-in-out;
+  -moz-transition: opacity .15s ease-in-out;
+  -ms-transition: opacity .15s ease-in-out;
+  -o-transition: opacity .15s ease-in-out;
+  transition: opacity .15s ease-in-out;
+  position: fixed;
+  right: 20px;
+  bottom: -60px;
+}
+
+.commentField{
+	color: rgb(33,33,33);
+	width: 80%;
+	border-radius: 2px;
+}
+
+.commentButton{
+	margin: 3em;
+	color: rgb(33,33,33);
+	float: right;
+	font-family: 'Fjalla One', sans-serif;
+	border-radius: 2px;
+	border:none;
+	padding: 1em;
+	background-color: #3498db;
+	color: white;
+}
+.backKey:hover{
+	text-align: right;
+	text-decoration: none;
+	opacity: 1;
+}
+.commentForm h2{
+	text-align: left;
+	margin-left: 1.5em;
+}
+.listComponent a:hover{
+	text-decoration: none;
+	opacity: 1;
+}
+
+.skeletonFooter p{
+	font-family: 'Fjalla One', sans-serif;
 }

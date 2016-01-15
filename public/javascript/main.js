@@ -3,33 +3,53 @@ var GuildSelected = 0;
 var Digit = [
   {
     tuutorit: "Tatu ja Julius",
-    fuksit: ["Aleksi", "Arttu", "Jali", "Matti", "Mikael", "Olli", "Ossi", "Roni", "Samuli"]
+    fuksit: ["Aleksi Helenius", "Arttu Nurminen", "Jali Rainio", "Matti Loimaranta", "Mikael Janhonen", "Olli Korhonen", "Ossi Airaksinen", "Roni Ronkainen", "Samuli Virtanen"]
   },
   {
     tuutorit: "Asser ja Tino",
-    fuksit: ["Eemeli", "Janne", "Johan", "Lassi", "Niklas B", "Niklas Lehtonen", "Santeri", "Tero", "Valtteri"]
+    fuksit: ["Eemeli Tynys", "Janne Marjalaakso", "Johan Sjövall", "Lassi Salomaa", "Niklas Byggmäster", "Niklas Lehtonen", "Santeri Juhela", "Tero Yrjölä", "Valtteri Murtonen"]
   },
   {
     tuutorit: "Axel ja Lasse",
-    fuksit: ["Joona", "Adrian", "Aleksi", "Antti", "Artturi", "Jussi", "Kalle", "Niklas N"]
+    fuksit: ["Joona Juusti", "Adrian Borzyszkowski", "Aleksi Palalitsas", "Antti Vuorinen", "Artturi Tähtinen", "Jussi Wallin", "Kalle Linden", "Niklas Niemelä"]
   },
   {
     tuutorit: "Konsta ja Pilvi",
-    fuksit: ["Henna", "Josia", "Lauri L", "Lauri M", "Loviisa", "Maria", "Meri", "Timo", "Topi"]
+    fuksit: ["Henna Henriksson", "Josia Nyman", "Lauri Laakkonen", "Lauri Mukkala", "Loviisa Mäenpää", "Maria Kostina", "Meri Saarinen", "Timo Blomqvist", "Topi Mäkinen"]
   },
   {
     tuutorit: "Olli ja Sampsa",
-    fuksit: ["Antti", "Juho", "Lauri", "Mikko", "Niklas Luomala", "Peetu", "Rami"]
+    fuksit: ["Antti Auranen", "Juho Kronbäck", "Lauri Jussinmäki", "Mikko Pesonen", "Niklas Luomala", "Peetu Seilonen", "Rami Ilo"]
   }
 
-]; 
+];
 
-var IvanHenna = [];
-var EemilEero = [];
-var JuhaLauri = [];
-var SuviEeva = [];
-var ValtteriJesse = [];
-var JannePekka = [];
+var Asteriski = [
+  {
+  tuutorit: "Ivan ja Henna",
+  fuksit: ["Paula Heino", "Sanni Koskinen", "Mika Korhonen", "Joonas Jäntti", "Jukka Hyttinen", "Mikko Kokkonen", "Mio Mattila", "Sulo Nippolainen", "Samuli Suutari"]
+  },
+  {
+  tuutorit: "Eemil ja Eero",
+  fuksit: ["Emma Lepistö", "Kaisa Pietilä", "Mikko Rustamo", "Kimmo Kauria", "AP Jääskeläinen", "Jaakko Kortesharju", "Toni Mobin", "Joni Osmoviita", "Teemu Tenkanen"]
+  },
+  {
+  tuutorit: "Juha ja Lauri",
+  fuksit: ["Minna Ikiviita", "Tommi Tocklin", "Antti Laukkanen", "Sami Granö", "Janina Kauppila", "Mika Lainela", "Joonas Mäkinen", "Saku Rennanen"]
+  },
+  {
+  tuutorit: "Suvi ja Eva",
+  fuksit: ["Ville Arvonen", "Santeri Ekdahl", "Marko Silander", "Olli Aarnio", "Marko Halonen", "Vilho Kivihalme", "Riku Lindblom", "Ville Nikkari", "Markus Saloranta"]
+  },
+  {
+  tuutorit: "Valtteri ja Jesse",
+  fuksit: ["Camilla Lähteenmäki", "Pinja Rantala", "Sami Kalli", "Krister Laakso", "Juho Karasti", "Toni Kyöttilä", "Aleksi Myllynpää", "Lauri Pelin", "Sami Torvinen"]
+  },
+  {
+  tuutorit: "Janne ja Pekka",
+  fuksit: ["Susanna Ritala", "Iina Siekkinen", "Aleksi Backman", "Mikael Mauninen", "Joona Kilpinen", "Henri Lammi", "Niki Niittymäki", "Ville Ritola", "Toni Tuominen"]
+  }
+];
 
 var Container = React.createClass({
   getInitialState : function(){
@@ -37,12 +57,7 @@ var Container = React.createClass({
   },
   componentDidMount: function(){
     console.log("TopContainer mounted.");
-    this.firebaseRef = new Firebase('https://kroniikkamaatti.firebaseIO.com/');
-    this.data = [];
-    this.firebaseRef.on('child_added', function(dataSnapshot){
-      this.data.push(dataSnapshot.val());
-      this.setState({data: this.data})
-    }.bind(this));
+    
   },
 	render: function(){
 		return(
@@ -148,11 +163,15 @@ var DigitView = React.createClass({
 
 var TutorView = React.createClass({
   getInitialState: function(){
-    return {fuksit: null};
+    return {fuksit: null, jarjesto: null, tuutorit: null};
   },
-  handleTutorClick: function(fuksit){
+  handleTutorClick: function(fuksit, tuutorit, jarjesto){
     console.log("Tutorit clicked with "+ fuksit[0])
-    this.setState({fuksit: fuksit});
+    this.setState({fuksit: fuksit, tuutorit: tuutorit, jarjesto: jarjesto});
+  },
+  handleReturnClick: function(){
+    console.log("Return was clicked.");
+    this.setState({fuksit: null});
   },
   render: function(){
     console.log("Showing tutorView for: " + this.props.data);
@@ -164,9 +183,11 @@ var TutorView = React.createClass({
             <h3>{this.props.data + "in tuutoriryhmät"}</h3>
               {Digit.map(function(tuutori, i){
               // console.log("i: " + Digit[i].tuutorit + " fuksi: " + Digit[i].fuksit);
-              return <li key={i} onClick={() => {that.handleTutorClick(Digit[i].fuksit) }}> {Digit[i].tuutorit}</li>
+              return <li className="listComponent" key={i} onClick={() => {that.handleTutorClick(Digit[i].fuksit,Digit[i].tuutorit, "Digit") }}><a href="#"> {Digit[i].tuutorit}</a></li>
             })}
           </ul>
+
+
         </div>
       );
     }else if (this.state.fuksit === null && this.props.data === "Asteriski"){
@@ -175,19 +196,19 @@ var TutorView = React.createClass({
         <div className="iconView">
           <ul className="tutorList">
             <h3>{this.props.data + "n tuutoriryhmät"}</h3>
-            <li><a href="#">Ivan ja Henna</a> </li>
-            <li><a href="#">Eemil ja Eero</a> </li>
-            <li><a href="#">Juha ja Lauri</a> </li>
-            <li><a href="#">Suvi ja Eeva</a> </li>
-            <li><a href="#">Valtteri ja Jesse</a> </li>
-            <li><a href="#">Janne ja Pekka</a> </li>
+            {
+              Asteriski.map(function(tuutori, i){
+              return <li className="listComponent" key={i} onClick={()=> {that.handleTutorClick(Asteriski[i].fuksit, Asteriski[i].tuutorit, "Asteriski")} }><a href="#"> {Asteriski[i].tuutorit}</a></li>
+            }.bind(that))}
           </ul>
+        
+
         </div>
       );
     }else if(this.state.fuksit !== null){
       console.log("Fuksit is not null");
       return(
-        <FuksiView fuksit={this.state.fuksit}/>
+        <FuksiView fuksit={this.state.fuksit}  handleReturnClick={that.handleReturnClick} jarjesto={this.state.jarjesto} tuutorit={this.state.tuutorit}/>
         // <p>Placeholder</p>
       );
     }else{
@@ -199,7 +220,7 @@ var TutorView = React.createClass({
 var FuksiView = React.createClass({
   getInitialState: function(){
     console.log("FuksiView called with " + this.props.fuksit);
-    return  {fuksiClicked: null, fuksit: this.props.fuksit}
+    return  {fuksiClicked: null, fuksit: this.props.fuksit, jarjesto: this.props.jarjesto, tuutorit: this.props.tuutorit}
   },
   handleFuksiClick: function( i){
     console.log(this.props.fuksit[i] + " clicked.");
@@ -209,23 +230,32 @@ var FuksiView = React.createClass({
     console.log("Rendering fuksiview for: " + this.props.fuksit);
     // this.handleFuksiClick(2);
   },
-
+  handleClick: function(){
+    console.log("HandleClick was called in fuksiview");
+    this.props.handleReturnClick();
+  },
+  handleReturnClick: function(){
+    this.setState({fuksiClicked: null});
+  },
   render: function(){
     var that = this;
     if(this.state.fuksiClicked != null){
       console.log("Fuksi "+ this.state.fuksiClicked +"clicked, grabbing fuksi-form.");
       return(
-        <CommentView name={this.state.fuksiClicked}/>
+        <CommentView name={this.state.fuksiClicked} handleReturnClick={that.handleReturnClick} tuutorit={this.props.tuutorit} jarjesto={this.props.jarjesto}/>
       );
     }else{
       return(
-        <div className="tutorList">
-          <ul>
+        <div className="iconView">
+          <ul className="tutorList">
             {this.props.fuksit.map(function(fuksi, i){
               console.log("i: " + i + " fuksi: " + fuksi);
-              return <li key={i} onClick={() => {that.handleFuksiClick(i) }}> {fuksi}</li>
+              return <li className="listComponent" key={i} onClick={() => {that.handleFuksiClick(i) }}><a href="#"> {fuksi}</a></li>
             })}
           </ul>
+          
+          <div><a className="backKey" href="#" onClick={() => {that.handleClick()} }>← Palaa</a></div>
+
         </div>
       );
     }
@@ -235,32 +265,52 @@ var FuksiView = React.createClass({
 var CommentView = React.createClass({
   componentDidMount: function(){
     console.log("Component mounted for " + this.props.name);
+    this.firebaseRef = new Firebase('https://kroniikkamaatti.firebaseIO.com/'+this.props.jarjesto+"/"+this.props.tuutorit+"/");
+    this.data = [];
+    this.firebaseRef.on('child_added', function(dataSnapshot){
+      this.data.push(dataSnapshot.val());
+      this.setState({data: this.data})
+    }.bind(this));
+    this.postsRef = this.firebaseRef.child(this.props.name);
   },
   handleTextChange: function(e){
     this.setState({text:e.target.value});
   },
   commentSubmit: function(comment){
+    var that = this;
     comment.preventDefault();
     var text = this.state.text.trim();
     var person = this.props.name;
     console.log("Comment for " + person + " that says " + text);
-    if( !text){
+    if(!text){
       return;
     }
+    that.postsRef.push({
+      comment: text
+    });
     this.setState({text:''});
+  },
+  componentWillUnmount: function() {
+    this.firebaseRef.off();
   },
   getInitialState: function(){
     return {text: ''};
   },
+  handleClick: function(){
+    this.props.handleReturnClick();
+  },
   render: function(){
     return(
+      <div className="iconView">
       <div className="fuksiContent">
-      <h2>{this.props.name}</h2>
         <form className="commentForm" onSubmit={this.commentSubmit}>
-          <input className="commentField" type="text" placeholder="Kommenttisi" value={this.state.text} onChange={this.handleTextChange}/>
+      <h2>{this.props.name}</h2>
+          <textarea rows="3" className="commentField" type="text" placeholder="Kommenttisi" value={this.state.text} onChange={this.handleTextChange}/>
           <input className="commentButton" type="submit" value="Kronikoi"/>
         </form>
         
+      </div>
+      <div><a className="backKey" href="#" onClick={() => {this.handleClick()} }>← Palaa</a></div>
       </div>
     );
   }
