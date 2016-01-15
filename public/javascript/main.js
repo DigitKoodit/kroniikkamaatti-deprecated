@@ -3,15 +3,15 @@
 var Digit = [
   {
     tuutorit: "Tatu ja Julius",
-    fuksit: ["Aleksi Helenius", "Arttu Nurminen", "Jali Rainio", "Matti Loimaranta", "Mikael Janhonen", "Olli Korhonen", "Ossi Airaksinen", "Roni Ronkainen", "Samuli Virtanen"]
+    fuksit: ["Tuutori Tatu", "Tuutori Julius", "Aleksi Helenius", "Arttu Nurminen", "Jali Rainio", "Matti Loimaranta", "Mikael Janhonen", "Olli Korhonen", "Ossi Airaksinen", "Roni Ronkainen", "Samuli Virtanen"]
   },
   {
     tuutorit: "Asser ja Tino",
-    fuksit: ["Eemeli Tynys", "Janne Marjalaakso", "Johan Sjövall", "Lassi Salomaa", "Niklas Byggmäster", "Niklas Lehtonen", "Santeri Juhela", "Tero Yrjölä", "Valtteri Murtonen"]
+    fuksit: ["Tuutori Asser", "Tuutori Tino", "Eemeli Tynys", "Janne Marjalaakso", "Johan Sjövall", "Lassi Salomaa", "Niklas Byggmäster", "Niklas Lehtonen", "Santeri Juhela", "Tero Yrjölä", "Valtteri Murtonen"]
   },
   {
     tuutorit: "Axel ja Lasse",
-    fuksit: ["Joona Juusti", "Adrian Borzyszkowski", "Aleksi Palalitsas", "Antti Vuorinen", "Artturi Tähtinen", "Jussi Wallin", "Kalle Linden", "Niklas Niemelä"]
+    fuksit: ["Tuutori Axel", "Tuutori Lasse" "Joona Juusti", "Adrian Borzyszkowski", "Aleksi Palalitsas", "Antti Vuorinen", "Artturi Tähtinen", "Jussi Wallin", "Kalle Linden", "Niklas Niemelä"]
   },
   {
     tuutorit: "Konsta ja Pilvi",
@@ -27,27 +27,27 @@ var Digit = [
 var Asteriski = [
   {
   tuutorit: "Ivan ja Henna",
-  fuksit: ["Paula Heino", "Sanni Koskinen", "Mika Korhonen", "Joonas Jäntti", "Jukka Hyttinen", "Mikko Kokkonen", "Mio Mattila", "Sulo Nippolainen", "Samuli Suutari"]
+  fuksit: ["Tuutori Ivan", "Tuutori Henna", "Paula Heino", "Sanni Koskinen", "Mika Korhonen", "Joonas Jäntti", "Jukka Hyttinen", "Mikko Kokkonen", "Mio Mattila", "Sulo Nippolainen", "Samuli Suutari"]
   },
   {
   tuutorit: "Eemil ja Eero",
-  fuksit: ["Emma Lepistö", "Kaisa Pietilä", "Mikko Rustamo", "Kimmo Kauria", "AP Jääskeläinen", "Jaakko Kortesharju", "Toni Mobin", "Joni Osmoviita", "Teemu Tenkanen"]
+  fuksit: ["Tuutori Eemil", "Tuutori Eero", "Emma Lepistö", "Kaisa Pietilä", "Mikko Ruskamo", "Kimmo Kauria", "AP Jääskeläinen", "Jaakko Kortesharju", "Toni Mobin", "Joni Osmoviita", "Teemu Tenkanen"]
   },
   {
   tuutorit: "Juha ja Lauri",
-  fuksit: ["Minna Ikiviita", "Tommi Tocklin", "Antti Laukkanen", "Sami Granö", "Janina Kauppila", "Mika Lainela", "Joonas Mäkinen", "Saku Rennanen"]
+  fuksit: ["Tuutori Juha", "Tuutori Lauri" ,"Minna Ikiviita", "Tommi Tocklin", "Antti Laukkanen", "Sami Granö", "Janina Kauppila", "Mika Lainela", "Joonas Mäkinen", "Saku Reunanen"]
   },
   {
   tuutorit: "Suvi ja Eva",
-  fuksit: ["Ville Arvonen", "Santeri Ekdahl", "Marko Silander", "Olli Aarnio", "Marko Halonen", "Vilho Kivihalme", "Riku Lindblom", "Ville Nikkari", "Markus Saloranta"]
+  fuksit: ["Tuutori Suvi", "Tuutori Eva", "Ville Arvonen", "Santeri Ekdahl", "Marko Silander", "Olli Aarnio", "Marko Halonen", "Vilho Kivihalme", "Riku Lindblom", "Ville Nikkari", "Markus Saloranta"]
   },
   {
   tuutorit: "Valtteri ja Jesse",
-  fuksit: ["Camilla Lähteenmäki", "Pinja Rantala", "Sami Kalli", "Krister Laakso", "Juho Karasti", "Toni Kyöttilä", "Aleksi Myllynpää", "Lauri Pelin", "Sami Torvinen"]
+  fuksit: ["Tuutori Valtteri", "Tuutori Jesse", "Camilla Lähteenmäki", "Pinja Rantala", "Sami Kalli", "Krister Laakso", "Juho Karasti", "Toni Kyöttilä", "Aleksi Myllynpää", "Lauri Pelin", "Sami Torvinen"]
   },
   {
   tuutorit: "Janne ja Pekka",
-  fuksit: ["Susanna Ritala", "Iina Siekkinen", "Aleksi Backman", "Mikael Mauninen", "Joona Kilpinen", "Henri Lammi", "Niki Niittymäki", "Ville Ritola", "Toni Tuominen"]
+  fuksit: ["Tuutori Janne", "Tuutori Pekka", "Susanna Ritala", "Iina Siekkinen", "Aleksi Backman", "Mikael Mauninen", "Joona Kilpinen", "Henri Lammi", "Niki Niittymäki", "Ville Ritola", "Toni Tuominen"]
   }
 ];
 
