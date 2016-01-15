@@ -19,7 +19,7 @@ var Digit = [
   },
   {
     tuutorit: "Olli ja Sampsa",
-    fuksit: ["Antti Auranen", "Juho Kronbäck", "Lauri Jussinmäki", "Mikko Pesonen", "Niklas Luomala", "Peetu Seilonen", "Rami Ilo"]
+    fuksit: ["Tuutori Olli", "Tuutori Sampsa", "Antti Auranen", "Juho Kronbäck", "Lauri Jussinmäki", "Mikko Pesonen", "Niklas Luomala", "Peetu Seilonen", "Rami Ilo"]
   }
 
 ];
