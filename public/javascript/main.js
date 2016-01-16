@@ -31,7 +31,7 @@ var Asteriski = [
   },
   {
   tuutorit: "Eemil ja Eero",
-  fuksit: ["Tuutori Eemil", "Tuutori Eero", "Emma Lepistö", "Kaisa Pietilä", "Mikko Ruskamo", "Kimmo Kauria", "AP Jääskeläinen", "Jaakko Kortesharju", "Toni Mobin", "Joni Osmoviita", "Teemu Tenkanen"]
+  fuksit: ["Tuutori Eemil", "Tuutori Eero", "Emma Lepistö", "Kaisa Pietilä", "Mikko Ruskamo", "Kimmo Kauria", "AP Jääskeläinen", "Jaakko Kortesharju", "Toni Mobin", "Joni Osmoviita", "Teemu Tenkanen", "Juho Kuusinen"]
   },
   {
   tuutorit: "Juha ja Lauri",
