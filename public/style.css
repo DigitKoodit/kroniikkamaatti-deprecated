@@ -46,7 +46,8 @@ h3{
 	top: 50%;
 	transform: translate(-50%, -50%);
 	width: 800px;
-	height: 400px;
+	min-height: 450px;
+
 	position: fixed;
 	text-align: center;
 	color: #B6B6B6;
