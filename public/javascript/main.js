@@ -43,7 +43,7 @@ var Asteriski = [
   },
   {
   tuutorit: "Valtteri ja Jesse",
-  fuksit: ["Tuutori Valtteri", "Tuutori Jesse", "Camilla Lähteenmäki", "Pinja Rantala", "Sami Kalli", "Krister Laakso", "Juho Karasti", "Toni Kyöttilä", "Aleksi Myllynpää", "Lauri Pelin", "Sami Torvinen"]
+  fuksit: ["Tuutori Valtteri", "Tuutori Jesse", "Camilla Lähteenmäki", "Pinja Rantala", "Sami Kalli", "Krister Laakso", "Juho Karasti", "Toni Kyöttilä", "Aleksi Myllynpää", "Lauri Pelin", "Sami Torvinen", "Mikael Kylänpää"]
   },
   {
   tuutorit: "Janne ja Pekka",
