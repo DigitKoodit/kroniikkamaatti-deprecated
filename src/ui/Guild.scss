@@ -1,0 +1,12 @@
+.guild {
+  &__student-groups__group {
+    @include kroniikka-padding;
+    @include kroniikka-margin;
+    @include material-shadow;
+    display: inline-block;
+
+    &__title {
+      text-transform: uppercase;
+    }
+  }
+}

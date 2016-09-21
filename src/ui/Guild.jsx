@@ -7,7 +7,7 @@ const StudentGroup = ({group}) => {
 
   return(
     <div className="guild__student-groups__group">
-      <h2 className="guild__student-groups__group">
+      <h2 className="guild__student-groups__group__title">
       {tutors}</h2>
       <ul>
         {students.map(student => <li>{student}</li>)}
@@ -25,7 +25,7 @@ const Guild = ({guildData}) => {
   const groups = guildData.get('groups');
 
   return (
-    <div>
+    <div className="guild">
       <h2>{guildName}</h2>
       <div className="guild__student-groups">
       { groups.map(group => <StudentGroup group={group} />) }

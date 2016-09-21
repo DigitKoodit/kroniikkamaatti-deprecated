@@ -25,7 +25,6 @@ const Page = ({ state }) => {
     state.get('guilds')
       .filter(guild => guild.get('guild') === state.get('active'))
       .first();
-  console.log(active);
   return (
     <div>
       <Navi guilds={guilds} state={state} />

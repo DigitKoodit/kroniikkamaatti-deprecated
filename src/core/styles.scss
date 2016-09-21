@@ -1,0 +1,15 @@
+$PADDING_DEFAULT: 12px;
+
+@mixin kroniikka-padding($multiplier: 1) {
+  padding: $multiplier * $PADDING_DEFAULT;
+}
+
+@mixin kroniikka-margin($multiplier: 1) {
+  margin: $multiplier * $PADDING_DEFAULT;
+}
+
+@mixin material-shadow ($size: 1) {
+  -webkit-box-shadow: 0px $size*2px $size*2px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px $size*2px $size*2px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px $size*2px $size*2px 0px rgba(0,0,0,0.4);
+}
