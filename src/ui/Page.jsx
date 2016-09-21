@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import {changeState} from '../index';
-// import Guild from './Guild';
+import PlaceHolder from './PlaceHolder';
+import Guild from './Guild';
 
 const Navi = ({guilds, state}) =>
   <div>
@@ -20,15 +21,17 @@ Navi.propTypes = {
 
 const Page = ({ state }) => {
   const guilds = state.get('guilds');
-  const active = state.get('active');
-  
+  const active = state.get('active') && 
+    state.get('guilds')
+      .filter(guild => guild.get('guild') === state.get('active'))
+      .first();
+  console.log(active);
   return (
     <div>
       <Navi guilds={guilds} state={state} />
       { !active
-        ? <div>Nothing selected.</div> 
-        : <div>Kroniikkamaatti initial.
-        Active: {active}</div>
+        ? <PlaceHolder /> 
+        : <Guild guildData={active} />
       }
     </div>
   );
