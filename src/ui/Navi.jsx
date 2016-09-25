@@ -9,14 +9,15 @@ const Navi = ({guilds}, {dispatch}) => {
     });
 
   return (  
-    <div>
+    <div className="navi">
+      <h2 className="navi-title"> Kroniikkamaatti </h2>
       <ul className="guild-list">
         {
           guilds.map(guild => {
             return (
               <li 
                 key={ guild.get('guild') }
-                className="guild-list-item"
+                className={`guild-list-item guild-list-item--${guild.get('guild')}`}
                 onClick={() => changeGuild(guild)}
               > 
                 {guild.get('guild')} 

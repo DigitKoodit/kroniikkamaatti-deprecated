@@ -1,0 +1,51 @@
+.navi {
+  @include material-shadow;
+  font-family: $serif;
+  font-weight: 900;
+  background-color: $color-black;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  .navi-title {
+    @include kroniikka-margin(2);
+    padding-top: 2px;
+    color: $color-blue;
+    font-family: $sans;
+    font-size: 18px;
+    position: absolute;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); 
+
+    @media (max-width: 770px) {
+      display: none;
+    }
+  }
+}
+
+.guild-list {
+
+  &-item {
+    @include kroniikka-padding(2);
+    font-size: 20px;
+    display: inline-block;
+    cursor: pointer;
+
+    &--Digit {
+      &:hover {
+        color: $digit;
+      }
+    }
+    &--Nucleus {
+      &:hover {
+        color: $nucleus;
+      }
+    }
+    &--Asteriski {
+      &:hover {
+        color: $asteriski;
+      }
+    }
+  }
+}

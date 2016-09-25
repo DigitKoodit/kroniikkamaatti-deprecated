@@ -1,5 +1,20 @@
 $PADDING_DEFAULT: 12px;
 
+$color-black: #2f2f2f;
+$color-white: #f1f1f1;
+$color-blue: #528CCB;
+$color-red: #BD3C4E;
+$serif: 'Vollkorn', serif;
+$sans: 'Exo', sans-serif;
+
+$digit: #F1C40F;
+$nucleus: #FF7B2C;
+$asteriski: #4A6B4E;
+
+body {
+  background-color: $color-blue;
+}
+
 @mixin kroniikka-padding($multiplier: 1) {
   padding: $multiplier * $PADDING_DEFAULT;
 }
@@ -12,4 +27,32 @@ $PADDING_DEFAULT: 12px;
   -webkit-box-shadow: 0px $size*2px $size*2px 0px rgba(0,0,0,0.4);
   -moz-box-shadow: 0px $size*2px $size*2px 0px rgba(0,0,0,0.4);
   box-shadow: 0px $size*2px $size*2px 0px rgba(0,0,0,0.4);
+}
+
+.placeholder {
+  h2 {
+    @include kroniikka-padding(2);
+    font-size: 40px;
+    font-weight: 900;
+  }
+  &-bread {
+    @include kroniikka-padding(2);
+    @include material-shadow;
+    background-color: white;
+    color: $color-black;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+
+    p {
+      @include kroniikka-padding;
+      text-align: left;
+      font-family: $serif;   
+      font-size: 20px;
+    }
+
+    .signature {
+      text-align: center;
+    }
+  }
 }

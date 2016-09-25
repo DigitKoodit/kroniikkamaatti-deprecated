@@ -1,7 +1,8 @@
 import { fromJS } from 'immutable';
 
 const testState = {
-  'active':'',
+  'activeGuild':'',
+  'activeStudent':'',
   'guilds': [
     {
       "guild": "Asteriski",
@@ -502,6 +503,7 @@ const initialState = {
           'students': [
             {'name':'Jenni'},
             {'name':'Kiia'},
+            {'name':'Helmi'},
             {'name':'Helmi'}
           ]
         },
@@ -517,6 +519,8 @@ const initialState = {
           'tutors': ['Kalle', 'Pekka'],
           'students': [
             {'name':'Jenni'},
+            {'name':'Kiia'},
+            {'name':'Kiia'},
             {'name':'Kiia'},
             {'name':'Helmi'}
           ]
@@ -534,4 +538,4 @@ const initialState = {
   ]
 }
 
-export const immutableState = fromJS(initialState);
+export const immutableState = fromJS(testState);

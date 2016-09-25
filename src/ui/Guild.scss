@@ -4,9 +4,34 @@
     @include kroniikka-margin;
     @include material-shadow;
     display: inline-block;
+    background-color: white;
+    color: $color-black;
+    vertical-align: top;
+    width: 220px;
+    text-align: left;
+    height: 282px;
 
     &__title {
-      text-transform: uppercase;
+      margin-bottom: $PADDING_DEFAULT;
+      font-weight: 900;
     }
+
+    &__list {
+      &__item {
+        cursor: pointer;
+        margin-top: $PADDING_DEFAULT / 2;
+
+        &:hover {
+          font-weight: 900;
+        }
+
+      }
+    }
+  }
+  &-title {
+    @include kroniikka-padding(2)
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 900;      
   }
 }

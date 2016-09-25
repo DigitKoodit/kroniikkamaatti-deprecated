@@ -5,22 +5,40 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  background-color: rgba(#f2f2f2, .5);
+  background-color: rgba(#2f2f2f, .5);
 }
 
 .student-modal {
   @include material-shadow;
-  margin-top: 100px;
+  margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
   background-color: white;
   height: 400px;
   width: 500px;
-  
+  color: $color-black;
+  max-width: 90%;
+
   &-close {
-    color: red;
-    text-transform: uppercase;
+    @include kroniikka-margin;
+    @include kroniikka-padding(.5);
+    @include material-shadow;
+    background-color: $color-red;
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    border-radius: 50%;
+    color: white;
+    font-weight: 900;
     cursor: pointer;
+
+    &:hover {
+      background-color: $color-black;
+      color: $color-red;
+    }
   }
 }
 
