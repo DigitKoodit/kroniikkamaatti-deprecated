@@ -1,17 +1,28 @@
 import React, { PropTypes } from 'react';
-import {addComment, setActivateStudent} from '../index';
-import StudentForm from './StudentForm';
 
-const StudentGroup = ({group}) => {
+const StudentGroup = ({group}, {dispatch}) => {
   const tutors = group.get('tutors').join(' & ');
   const students = group.get('students');
+
+  const setActiveStudent = student => {
+    dispatch({
+      type: 'activateStudent',
+      payload: student
+    });
+  }
   
   return(
     <div className="guild__student-groups__group">
       <h2 className="guild__student-groups__group__title">
       {tutors}</h2>
       <ul>
-        {students.map(student => <li>{student}</li>)}
+        {students.map(student => 
+          <li 
+            onClick={() => setActiveStudent(student)}
+            key={student}>
+            {student}
+          </li>
+        )}
       </ul>
     </div>
   );
@@ -21,24 +32,29 @@ StudentGroup.propTypes = {
   group: PropTypes.object.isRequired
 };
 
+StudentGroup.contextTypes = {
+  dispatch: PropTypes.func
+}
+
+
 const Guild = ({active}, {dispatch}) => {
-  const guildName = guildData.get('guild');
-  const groups = guildData.get('groups');
-  const activeStudent = state.get('activeStudent');
+  const guildName = active.get('guild');
+  const groups = active.get('groups');
 
   return (
     <div className="guild">
       <h2>{guildName}</h2>
       <div className="guild__student-groups">
-      { groups.map(group => <StudentGroup group={group} activateStudent={changeActiveStudent} />) }
+      { groups.map((group, i) => 
+        <StudentGroup key={i} group={group} />
+      )}
       </div>
-      {activeStudent && <StudentForm student={activeStudent} />}
     </div>
   );
 }
 
 Guild.propTypes = {
-  guildData: PropTypes.object.isRequired
+  active: PropTypes.object.isRequired
 };
 
 Guild.contextTypes = {

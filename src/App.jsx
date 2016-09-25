@@ -23,31 +23,31 @@ const App = React.createClass({
   initializeFireBase(){
     return getNewFirebase();
   },
+  getNewState(action, state){
+    console.log('Action type:', action.type)
+    switch(action.type) {
+      case 'comment':
+        console.log('Comment written', action.payload);
+      case 'activateStudent':
+        console.log(action.payload);
+        return state.set('activeStudent', action.payload);
+      case 'activateGuild':
+        console.log('setting active guild');
+        return state.set('activeGuild', action.payload);
+      default:
+        console.log('Returning earlier state');
+        return state;
+    };
+  },
   updateState(action){
     const state = this.state.store;
-    console.log('updateState', state);
-    console.log('action called:', action)
-    this.setState(() => {
-      console.log('Now for action machine:');
-      switch(action.type) {
-        case 'comment':
-          console.log('Comment written', action.payload);
-        case 'activateStudent':
-          console.log(action.payload);
-          return state.set('activeStudent', action.payload);
-        case 'activateGuild':
-          return state.set('activeGuild', action.payload);
-        default:
-          console.log('Returning earlier state');
-          return state;
-      };
-    console.log('state:', this.state.store.toJS());
-    });
+    this.setState({store: this.getNewState(action, state)});
   },
   componentWillMount(){
     console.log('componentWillMount', this.state.store)
   },
   render(){
+    console.log('Render method called');
     return <Page store={this.state.store} />
   }
 });
