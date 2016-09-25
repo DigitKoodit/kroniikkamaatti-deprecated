@@ -1,18 +1,13 @@
 import ReactDOM from 'react-dom';
 import React from'react';
-import { immutableState } from './core/state';
-import Page from './ui/Page';
 
-export function changeState(payload, state){
-  console.log(state, 'payload is', payload);
-  renderComponents(state.set('active', payload));
-};
+import App from './App';
 
-const renderComponents = (state = immutableState) => {
+function renderComponents(){
   ReactDOM.render(
-    <Page state={state} />,
+    <App />,
     document.getElementById('app')
   );
-}
+};
 
 renderComponents();

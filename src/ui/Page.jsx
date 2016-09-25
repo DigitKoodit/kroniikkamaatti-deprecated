@@ -1,44 +1,32 @@
 import React, { PropTypes } from 'react';
-import {changeState} from '../index';
 import PlaceHolder from './PlaceHolder';
 import Guild from './Guild';
+import Navi from './Navi';
 
-const Navi = ({guilds, state}) =>
-  <div>
-    <ul>
-      {
-        guilds.map(guild => {
-          console.log('guild is', guild);
-          return <li onClick={() => changeState(guild.get('guild'), state)}> {guild.get('guild')} </li>
-        })
-      }
-    </ul>
-  </div>
-
-Navi.propTypes = {
-  guilds: PropTypes.object.isRequired
-}
-
-const Page = ({ state }) => {
-  const guilds = state.get('guilds');
-  const active = state.get('active') && 
-    state.get('guilds')
-      .filter(guild => guild.get('guild') === state.get('active'))
+const Page = ({ store }, name, dispatch) => {
+  const guilds = store.get('guilds');
+  console.log('guilds', guilds)
+  console.log('Hi, my name is', name)
+  const active = store.get('activeGuild') && 
+    store.get('guilds')
+      .filter(guild => guild.get('guild') === store.get('activeGuild'))
       .first();
+
   return (
     <div>
-      <Navi guilds={guilds} state={state} />
-      { !active
-        ? <PlaceHolder /> 
-        : <Guild guildData={active} />
-      }
+      <Navi guilds={guilds} changeState={dispatch} />
+      <PlaceHolder />
     </div>
   );
 };
 
 
 Page.propTypes = {
-  state: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired
 };
+
+Page.contextTypes = {
+  name: PropTypes.string
+}
 
 export default Page;

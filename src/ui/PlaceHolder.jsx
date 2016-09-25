@@ -9,7 +9,6 @@ const PlaceHolder = () => {
 }
 
 PlaceHolder.propTypes = {
-  guildData: PropTypes.object.isRequired
 };
 
 export default PlaceHolder;
