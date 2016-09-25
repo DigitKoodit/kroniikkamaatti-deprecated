@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:css": "node-sass --include-path scss src/index.scss ./dist/css/styles.css",
-    "build:js": "bash -c \"browserify src/index.jsx --extension=jsx -o dist/bundle.js -t [ babelify --presets [ es2015 react ] ]\"",
+    "build:js": "bash -c \"browserify src/index.jsx --extension=jsx -o dist/bundle.js -t [ babelify --presets [ es2015 react ] ] && npm run uglify\"",
     "uglify": "uglifyjs --compress --mangle -- dist/bundle.js > dist/bundle.min.js && rm dist/bundle.js",
     "clean": "rm -rf dist",
     "server": "http-server dist",
@@ -14,7 +14,8 @@
     "build:all": "npm run clean && ( npm run copy:html && npm run build:css && npm run build:js )",
     "watch": "nodemon --ignore dist/ -e scss,html,jsx,js -x \"npm run build:all\"",
     "start": "bash -c \"(npm run server & npm run watch)\"",
-    "serve": "bash -c \"(npm run server & npm run build:all)\""
+    "serve": "bash -c \"(npm run server & npm run build:all)\"",
+    "production": "bash -c \"NODE_ENV=production npm run serve\""
   },
   "author": "Julius Rajala",
   "license": "ISC",
