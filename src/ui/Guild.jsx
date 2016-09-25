@@ -5,7 +5,6 @@ import StudentForm from './StudentForm';
 const StudentGroup = ({group}) => {
   const tutors = group.get('tutors').join(' & ');
   const students = group.get('students');
-  console.log(addComment);
   
   return(
     <div className="guild__student-groups__group">
@@ -22,7 +21,7 @@ StudentGroup.propTypes = {
   group: PropTypes.object.isRequired
 };
 
-const Guild = ({guildData, state}) => {
+const Guild = ({active}, {dispatch}) => {
   const guildName = guildData.get('guild');
   const groups = guildData.get('groups');
   const activeStudent = state.get('activeStudent');
@@ -41,5 +40,9 @@ const Guild = ({guildData, state}) => {
 Guild.propTypes = {
   guildData: PropTypes.object.isRequired
 };
+
+Guild.contextTypes = {
+  dispatch: PropTypes.func
+}
 
 export default Guild;

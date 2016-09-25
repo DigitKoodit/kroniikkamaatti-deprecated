@@ -16,7 +16,7 @@ const App = React.createClass({
 
   getInitialState(){
     return {
-      store:immutableState,
+      store: immutableState,
       firebase: this.initializeFireBase
     }
   },
@@ -24,25 +24,30 @@ const App = React.createClass({
     return getNewFirebase();
   },
   updateState(action){
-    this.setState((state = this.state.store) => {
+    const state = this.state.store;
+    console.log('updateState', state);
+    console.log('action called:', action)
+    this.setState(() => {
+      console.log('Now for action machine:');
       switch(action.type) {
         case 'comment':
-          console.log(action.payload);
+          console.log('Comment written', action.payload);
         case 'activateStudent':
           console.log(action.payload);
           return state.set('activeStudent', action.payload);
         case 'activateGuild':
           return state.set('activeGuild', action.payload);
         default:
+          console.log('Returning earlier state');
           return state;
       };
+    console.log('state:', this.state.store.toJS());
     });
   },
   componentWillMount(){
     console.log('componentWillMount', this.state.store)
   },
   render(){
-    console.log(this.state.store)
     return <Page store={this.state.store} />
   }
 });
