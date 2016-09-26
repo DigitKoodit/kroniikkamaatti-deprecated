@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-const realState = {
+const testState = {
 'activeGuild':'',
 'activeStudent':'',
 'guilds': [
@@ -13,6 +13,12 @@ const realState = {
           "Jesse Rauha"
         ],
         "students": [
+          {
+            "name": "Tuutori Tiina"
+          },
+          {
+            "name": "Tuutori Jesse"
+          },
           {
             "name": "Nami Le"
           },
@@ -52,6 +58,12 @@ const realState = {
         ],
         "students": [
           {
+            "name": "Tuutori Eemil"
+          },
+          {
+            "name": "Tuutori Eero"
+          },
+          {
             "name": "Ville Vahtera"
           },
           {
@@ -86,6 +98,12 @@ const realState = {
           "Ari-Pekka Jääskeläinen"
         ],
         "students": [
+          {
+            "name": "Tuutori Teemu"
+          },
+          {
+            "name": "Tuutori Ari-Pekka"
+          },
           {
             "name": "Juho Vieno"
           },
@@ -125,6 +143,12 @@ const realState = {
         ],
         "students": [
           {
+            "name": "Tuutori Camilla"
+          },
+          {
+            "name": "Tuutori Iina"
+          },
+          {
             "name": "Aki Tervo"
           },
           {
@@ -160,6 +184,12 @@ const realState = {
         ],
         "students": [
           {
+            "name": "Tuutori Valtteri"
+          },
+          {
+            "name": "Tuutori Sanni"
+          },
+          {
             "name": "Markus Cronvall"
           },
           {
@@ -191,6 +221,12 @@ const realState = {
           "Marko Silander"
         ],
         "students": [
+          {
+            "name": "Tuutori Saku"
+          },
+          {
+            "name": "Tuutori Marko"
+          },
           {
             "name": "Heidi Laine"
           },
@@ -574,4 +610,4 @@ const initialState = {
   ]
 }
 
-export const immutableState = fromJS(realState);
+export const immutableState = fromJS(initialState);
