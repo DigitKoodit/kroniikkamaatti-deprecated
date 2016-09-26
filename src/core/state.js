@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-const testState = {
+const realState = {
 'activeGuild':'',
 'activeStudent':'',
 'guilds': [
@@ -574,4 +574,4 @@ const initialState = {
   ]
 }
 
-export const immutableState = fromJS(initialState);
+export const immutableState = fromJS(realState);

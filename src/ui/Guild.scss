@@ -27,12 +27,26 @@
 
       }
     }
+
+    @media (max-device-width: 550px), (max-width: 550px){
+      width: 80%;
+      height: initial;
+      font-size: 40px;
+
+      &__list__item {
+        padding: $PADDING_DEFAULT;
+      }
+    }
   }
   &-title {
     @include kroniikka-padding(2)
     text-transform: uppercase;
     font-size: 40px;
     font-weight: 900;
-    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); 
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+
+    @media (max-device-width: 550px), (max-width: 550px){
+      font-size: 60px;
+    }
   }
 }

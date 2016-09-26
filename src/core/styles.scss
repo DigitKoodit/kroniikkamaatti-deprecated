@@ -30,8 +30,11 @@ body {
 }
 
 .placeholder {
+  font-size: 20px;
+
   h2 {
     @include kroniikka-padding(2);
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); 
     font-size: 40px;
     font-weight: 900;
   }
@@ -48,11 +51,18 @@ body {
       @include kroniikka-padding;
       text-align: left;
       font-family: $serif;   
-      font-size: 20px;
     }
 
     .signature {
       text-align: center;
+    }
+  }
+
+  @media (max-device-width: 550px), (max-width: 550px){
+    font-size: 40px;
+
+    h2 {
+      font-size: 60px;
     }
   }
 }

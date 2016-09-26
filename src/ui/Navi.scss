@@ -18,9 +18,10 @@
     text-transform: uppercase;
     text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); 
 
-    @media (max-width: 770px) {
+    @media (max-width: 770px), (max-device-width: 770px) {
       display: none;
     }
+
   }
 }
 
@@ -46,6 +47,12 @@
       &:hover {
         color: $asteriski;
       }
+    }
+  }
+  @media (max-device-width: 550px), (max-width: 550px){
+    &-item {
+      @include kroniikka-padding(4);
+      font-size: 40px;
     }
   }
 }

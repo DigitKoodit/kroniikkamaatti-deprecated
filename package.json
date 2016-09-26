@@ -13,9 +13,9 @@
     "copy:html": "bash -c \"mkdir -p ./dist/ && cp -R ./src/index.html ./dist/\"",
     "build:all": "npm run clean && ( npm run copy:html && npm run build:css && npm run build:js )",
     "watch": "nodemon --ignore dist/ -e scss,html,jsx,js -x \"npm run build:all\"",
-    "start": "bash -c \"(npm run server & npm run watch)\"",
-    "serve": "bash -c \"(npm run server & npm run build:all)\"",
-    "production": "bash -c \"NODE_ENV=production npm run serve\""
+    "dev": "bash -c \"(npm run server & npm run watch)\"",
+    "serve": "bash -c \"npm run build:all && npm run server\"",
+    "start": "bash -c \"NODE_ENV=production npm run serve\""
   },
   "author": "Julius Rajala",
   "license": "ISC",
@@ -37,7 +37,7 @@
     "nodemon": "^1.10.0"
   },
   "engines": {
-    "node": "6.4.0"
+    "node": "6.5.0"
   },
   "babel": {
     "presets": [

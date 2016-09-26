@@ -10,17 +10,71 @@
 
 .student-modal {
   @include material-shadow;
+  @include kroniikka-padding(2);  
   margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
   background-color: white;
-  height: 400px;
+  max-height: 400px;
   width: 500px;
   color: $color-black;
   max-width: 90%;
 
+  &__chars-left {
+    font-weight: 900;
+
+    &__number{
+      font-weight: 900;
+      &--high {
+        color: $color-blue;
+      }
+      &--low{
+        color: $color-red        
+      }
+    }
+  }
+
+  &__form {
+    width: 100%;
+    text-align: center;
+    &__input, &__submit {
+      
+      @include kroniikka-margin;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &__input {
+      width: 250px;
+      height: 150px;
+      border: 2px solid $color-blue;
+      border-radius: 2px;  
+    }
+
+    &__submit {
+      @include material-shadow;
+      @include kroniikka-padding;
+      background-color: $color-blue;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+      font-family: $sans;
+      font-weight: 900;
+      border: none;
+
+      &:hover {
+        color: $color-black;
+      }
+    }
+  }
+
+  &__student-name {
+    @include kroniikka-padding(2);
+    font-size: 20px;
+    font-weight: 900;
+  }
+
   &-close {
-    @include kroniikka-margin;
     @include kroniikka-padding(.5);
     @include material-shadow;
     background-color: $color-red;
@@ -38,6 +92,35 @@
     &:hover {
       background-color: $color-black;
       color: $color-red;
+    }
+  }
+
+  @media (max-device-width: 550px), (max-width: 550px){
+    width: 80%;
+    margin-top: 250px;
+    max-height: 100%;
+
+    &__student-name {
+      font-size: 50px;
+    }
+
+    &__form {
+      font-size: 25px;
+      &__input {
+        font-size: 35px;
+        width: 60%;
+        height: 300px;
+      }
+
+      &__submit {
+        font-size: 35px;
+      }
+    }
+
+    &-close {
+      @include kroniikka-padding(2);
+      font-size: 30px;
+      text-transform: uppercase;
     }
   }
 }

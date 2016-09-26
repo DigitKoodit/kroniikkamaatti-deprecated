@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Page from './ui/Page';
 import { immutableState } from './core/state';
-import { getNewFirebase } from './core/firebase';
+import { getNewFirebase, addComment } from './core/firebase';
 
 const App = React.createClass({
   contextTypes(){
@@ -13,29 +13,23 @@ const App = React.createClass({
       dispatch: this.updateState
     }
   },
-
   getInitialState(){
     return {
       store: immutableState,
-      firebase: this.initializeFireBase
+      firebase: getNewFirebase()
     }
-  },
-  initializeFireBase(){
-    return getNewFirebase();
   },
   getNewState(action, state){
     console.log('Action type:', action.type)
     switch(action.type) {
       case 'comment':
-        console.log('Comment written', action.payload);
+        addComment(this.state.firebase, action.payload.student, action.payload.message);
+        return state.set('activeStudent', false);
       case 'activateStudent':
-        console.log(action.payload);
         return state.set('activeStudent', action.payload);
       case 'activateGuild':
-        console.log('setting active guild');
         return state.set('activeGuild', action.payload);
       default:
-        console.log('Returning earlier state');
         return state;
     };
   },
@@ -43,11 +37,7 @@ const App = React.createClass({
     const state = this.state.store;
     this.setState({store: this.getNewState(action, state)});
   },
-  componentWillMount(){
-    console.log('componentWillMount', this.state.store)
-  },
   render(){
-    console.log('Render method called');
     return <Page store={this.state.store} />
   }
 });
