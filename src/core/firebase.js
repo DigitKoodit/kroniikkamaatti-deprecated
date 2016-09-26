@@ -8,15 +8,28 @@ const config = {
   messagingSenderId: "957135810661"
 };
 
-firebase.initializeApp(config);
+export function getNewFirebase() {
+  return firebase.initializeApp(config);
+}
 
-const database = firebase.database();
+export function addComment(firebaseRef, student, comment) {
+  const guild = student.get('guild').toLowerCase();
+  const tutors = student.get('tutors')
+    .split(' ')
+    .join('_')
+    .toLowerCase();
+  const name = student.get('name')
+    .split(' ')
+    .join('_')
+    .toLowerCase();
+  const dbPath = `${guild}/${tutors}/${name}`
 
-export function getNewFirebase(options) {
-  return function initializeFirebase(config = config) {
-    const base = firebase.initializeApp(config);
-    base.database().ref('guilds/');
-
-    return base;
-  }
+  Promise.resolve(
+    firebaseRef.database().ref(dbPath).push({
+      comment: comment
+    }))
+    .then(() => {
+      console.log('Success')
+    })
+    .catch((e) => {console.log(e)});
 }

@@ -32,6 +32,7 @@ body {
 .placeholder {
   h2 {
     @include kroniikka-padding(2);
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); 
     font-size: 40px;
     font-weight: 900;
   }

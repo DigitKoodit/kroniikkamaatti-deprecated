@@ -1,13 +1,18 @@
 import React, { PropTypes } from 'react';
+import { Map } from 'immutable';
 
-const StudentGroup = ({group}, {dispatch}) => {
+const StudentGroup = ({group, guild}, {dispatch}) => {
   const tutors = group.get('tutors').join(' & ');
   const students = group.get('students');
 
   const setActiveStudent = student => {
     dispatch({
       type: 'activateStudent',
-      payload: student
+      payload: Map({
+        name: student.get('name'),
+        guild: guild,
+        tutors: tutors
+      })
     });
   }
   
@@ -48,7 +53,7 @@ const Guild = ({active}, {dispatch}) => {
       <h2 className="guild-title">{guildName}</h2>
       <div className="guild__student-groups">
       { groups.map((group, i) => 
-        <StudentGroup key={i} group={group} />
+        <StudentGroup key={i} guild={guildName} group={group} />
       )}
       </div>
     </div>
