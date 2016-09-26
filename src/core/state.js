@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-const testState = {
+const initialState = {
 'activeGuild':'',
 'activeStudent':'',
 'guilds': [
@@ -552,62 +552,5 @@ const testState = {
     ]
   }
 ]}
-
-const initialState = {
-  'activeGuild':'',
-  'activeStudent':'',
-  'guilds': [
-    {
-      'guild': 'Digit',
-      'groups': [
-        {
-          'tutors': ['Kille', 'Pertti'],
-          'students': [
-            {'name':'Juha'},
-            {'name':'Kalle'},
-            {'name':'Heimo'}
-          ]
-        }
-      ]
-    },
-    {
-      'guild': 'Asteriski',
-      'groups': [
-        {
-          'tutors': ['Kalle', 'Pekka'],
-          'students': [
-            {'name':'Jenni'},
-            {'name':'Kiia'},
-            {'name':'Helmi'}
-          ]
-        },
-        {
-          'tutors': ['Kalle', 'Pekka'],
-          'students': [
-            {'name':'Jenni'},
-            {'name':'Kiia'},
-            {'name':'Helmi'}
-          ]
-        },
-        {
-          'tutors': ['Kalle', 'Pekka'],
-          'students': [
-            {'name':'Jenni'},
-            {'name':'Kiia'},
-            {'name':'Helmi'}
-          ]
-        },
-        {
-          'tutors': ['Kalle', 'Pekka'],
-          'students': [
-            {'name':'Jenni'},
-            {'name':'Kiia'},
-            {'name':'Helmi'}
-          ]
-        }
-      ]
-    }
-  ]
-}
 
 export const immutableState = fromJS(initialState);
