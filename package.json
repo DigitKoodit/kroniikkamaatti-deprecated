@@ -14,7 +14,7 @@
     "build:all": "npm run clean && ( npm run copy:html && npm run build:css && npm run build:js )",
     "watch": "nodemon --ignore dist/ -e scss,html,jsx,js -x \"npm run build:all\"",
     "dev": "bash -c \"(npm run server & npm run watch)\"",
-    "serve": "bash -c \"(npm run server & npm run build:all)\"",
+    "serve": "bash -c \"npm run build:all && npm run server\"",
     "start": "bash -c \"NODE_ENV=production npm run serve\""
   },
   "author": "Julius Rajala",
