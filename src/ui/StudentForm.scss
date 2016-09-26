@@ -47,6 +47,8 @@
     &__input {
       width: 250px;
       height: 150px;
+      border: 2px solid $color-blue;
+      border-radius: 2px;  
     }
 
     &__submit {
@@ -90,6 +92,35 @@
     &:hover {
       background-color: $color-black;
       color: $color-red;
+    }
+  }
+
+  @media (max-device-width: 550px), (max-width: 550px){
+    width: 80%;
+    margin-top: 250px;
+    max-height: 100%;
+
+    &__student-name {
+      font-size: 50px;
+    }
+
+    &__form {
+      font-size: 25px;
+      &__input {
+        font-size: 35px;
+        width: 60%;
+        height: 300px;
+      }
+
+      &__submit {
+        font-size: 35px;
+      }
+    }
+
+    &-close {
+      @include kroniikka-padding(2);
+      font-size: 30px;
+      text-transform: uppercase;
     }
   }
 }
