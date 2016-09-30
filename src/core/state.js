@@ -252,7 +252,7 @@ const initialState = {
             "name": "Sami Suonpää"
           },
           {
-            "name": "Isy Puttrys"
+            "name": "Isy Puttrus"
           }
         ]
       }
@@ -382,7 +382,7 @@ const initialState = {
             "name": "Tuutori Lauri"
           },
           {
-            "name": "Ilkka Luoma-aho"
+            "name": "Iikka Luoma-aho"
           },
           {
             "name": "Mikko Sinisalo"
@@ -533,7 +533,7 @@ const initialState = {
             "name": "Joonatan Mäkelä"
           },
           {
-            "name": "Vilhelmiina Lehtinen"
+            "name": "Vilhelmiina Lehti"
           },
           {
             "name": "Heidi Toivonen"
@@ -542,7 +542,7 @@ const initialState = {
             "name": "Nea Valtonen"
           },
           {
-            "name": "Toni Sjöblom"
+            "name": "Tomi Sjöblom"
           },
           {
             "name": "Roni Pääkkönen"
